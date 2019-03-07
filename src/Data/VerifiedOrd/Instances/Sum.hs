@@ -57,10 +57,13 @@ leqSumAntisym leqa leqaAntisym leqb leqbAntisym veqa veqb p@(Right x) q@(Left y)
     $ (leqSum leqa leqb p q && leqSum leqa leqb q p)
   *** QED
 leqSumAntisym leqa leqaAntisym leqb leqbAntisym veqa veqb p@(Right x) q@(Right y) =
+    (leqSum leqa leqb p q, leqSum leqa leqb q p, leqbAntisym x y) *** QED
+{- 
       using (VEq veqb)
     $ (leqSum leqa leqb p q && leqSum leqa leqb q p)
-  ==. (x == y ? leqbAntisym x y)
+  ==. ((x == y) ? leqbAntisym x y)
   *** QED
+-}
 
 {-@ leqSumTrans :: leqa:(a -> a -> Bool) -> leqaTrans:(x:a -> y:a -> z:a -> { leqa x y && leqa y z ==> leqa x z })
                 -> leqb:(b -> b -> Bool) -> leqbTrans:(x:b -> y:b -> z:b -> { leqb x y && leqb y z ==> leqb x z })

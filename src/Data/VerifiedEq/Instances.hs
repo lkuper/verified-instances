@@ -34,20 +34,18 @@ eqUnit :: () -> () -> Bool
 eqUnit () () = True
 {-# INLINE eqUnit #-}
 
-simpleProof :: ()
-simpleProof = ()
 
 {-@ eqUnitRefl :: x:() -> { eqUnit x x } @-}
 eqUnitRefl :: () -> Proof
-eqUnitRefl () = simpleProof
+eqUnitRefl () = ()
 
 {-@ eqUnitSym :: x:() -> y:() -> { eqUnit x y ==> eqUnit y x } @-}
 eqUnitSym :: () -> () -> Proof
-eqUnitSym () () = simpleProof
+eqUnitSym () () = ()
 
 {-@ eqUnitTrans :: x:() -> y:() -> z:() -> { eqUnit x y && eqUnit y z ==> eqUnit x z } @-}
 eqUnitTrans :: () -> () -> () -> Proof
-eqUnitTrans () () () = simpleProof
+eqUnitTrans () () () = ()
 
 veqUnit :: VerifiedEq ()
 veqUnit = VerifiedEq eqUnit eqUnitRefl eqUnitSym eqUnitTrans
@@ -59,7 +57,7 @@ eqInt x y = x == y
 
 {-@ eqIntRefl :: x:Int -> { eqInt x x } @-}
 eqIntRefl :: Int -> Proof
-eqIntRefl x = simpleProof
+eqIntRefl x = ()
 
 {-@ eqIntSym :: x:Int -> y:Int -> { eqInt x y ==> eqInt y x } @-}
 eqIntSym :: Int -> Int -> Proof
@@ -79,7 +77,7 @@ eqInt64 x y = x == y
 
 {-@ eqInt64Refl :: x:Int64 -> { eqInt64 x x } @-}
 eqInt64Refl :: Int64 -> Proof
-eqInt64Refl x = simpleProof
+eqInt64Refl x = ()
 
 {-@ eqInt64Sym :: x:Int64 -> y:Int64 -> { eqInt64 x y ==> eqInt64 y x } @-}
 eqInt64Sym :: Int64 -> Int64 -> Proof
@@ -99,7 +97,7 @@ eqDouble x y = x == y
 
 {-@ eqDoubleRefl :: x:Double -> { eqDouble x x } @-}
 eqDoubleRefl :: Double -> Proof
-eqDoubleRefl x = simpleProof
+eqDoubleRefl x = ()
 
 {-@ eqDoubleSym :: x:Double -> y:Double
                 -> { eqDouble x y ==> eqDouble y x } @-}
